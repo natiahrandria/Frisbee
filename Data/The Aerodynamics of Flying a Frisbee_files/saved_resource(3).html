@@ -1,0 +1,108 @@
+
+<!-- saved from url=(0083)https://www.scientificamerican.com/article/bring-science-home-frisbee-aerodynamics/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body{margin:0 0 0 0;padding:0 0 0 0;height:100%;}</style></head><body><script>
+
+
+  // Scientific American - Passback 728x90
+    var tagWidth = 728;
+    var tagHeight = 90;
+
+    var doNotChange = 'Scientific American - Passback 728x90';
+
+    var bids = [
+{
+                bidder: 'appnexus',
+                params: {
+                    placementId: '12336961'
+                }
+
+            }, 
+ {
+                bidder:'openx',
+                 params: {
+                        unit:'539445722',
+                        delDomain:'onscroll-d.openx.net'
+                }
+            }, 
+{
+                bidder: 'sovrn',
+                params: {
+                    tagid: '530130'
+                }
+                
+            },
+ {
+                bidder: 'rubicon',
+                params: {
+                    accountId: '15380',
+                    siteId: '102602',
+                    zoneId: '764462',
+                    sizes: [2]
+                }
+            
+            },
+   ];
+
+    var bidTimeOut = 1000;
+
+    var passbackTagHtml =
+                     '<di' + 'v id="539445684_INSERT_SLOT_ID_HERE" style="width:728px;height:90px;margin:0;padding:0">' +
+            '<nosc' + 'ript>' +
+            '<ifr' + 'ame id="e10d70de16" name="e10d70de16" src="//uk-ads.openx.net/w/1.0/afr?auid=539445684&cb=INSERT_RANDOM_NUMBER_HERE" frameborder="0" scrolling="no" width="728" height="90">' +
+            '<' + 'a href="//uk-ads.openx.net/w/1.0/rc?cs=e10d70de16&cb=INSERT_RANDOM_NUMBER_HERE" ><im' +
+            'g src="//uk-ads.openx.net/w/1.0/ai?auid=539445684&cs=b49d499f0b&cb=INSERT_RANDOM_NUMBER_HERE" border="0" alt=""></' +
+            'a></ifr' + 'ame></noscr' + 'ipt>' +
+            '</di' + 'v><scr' + 'ipt type="text/javascript">' +
+            'var OX_ads = OX_ads || [];' +
+            'OX_ads.push({' +
+            'slot_id: "539445684_INSERT_SLOT_ID_HERE",' +
+            'auid: "539445684"' +
+            '});' +
+            '</scr' + 'ipt> <scr' + 'ipt type="text/javascript" src="//uk-ads.openx.net/w/1.0/jstag"></scr' + 'ipt>';
+
+
+    var pbjs = pbjs || {};
+    pbjs.que = pbjs.que || [];
+    pbjs.que.push(function() {
+        pbjs.enableAnalytics({
+            provider: 'ga',
+            options: {
+                global: 'ga', // <string> name of GA global. Default is 'ga'
+                enableDistribution: false,
+            }
+        });
+    });
+
+    pbjs.que.push(function() {
+        var adUnits = [{
+            code: doNotChange,
+            sizes: [[728,90]],
+            bids: bids
+        }];
+
+        pbjs.addAdUnits(adUnits);
+
+        pbjs.requestBids({
+            timeout: bidTimeOut,
+            bidsBackHandler: function() {
+                var iframe = document.getElementById('postbid_if');
+                var iframeDoc = iframe.contentWindow.document;
+                var params = pbjs.getAdserverTargetingForAdUnitCode(doNotChange);
+
+                if (params && params['hb_adid']){
+                    pbjs.renderAd(iframeDoc, params['hb_adid']);
+                } else {
+                    iframe.width = tagWidth;
+                    iframe.height = tagHeight;
+                    iframeDoc.write(passbackTagHtml);
+                    iframeDoc.close();
+                }
+            }
+        });
+    });
+
+</script>
+
+<script type="text/javascript" src="./prebid.min.js.download" async=""></script>
+
+<iframe id="postbid_if" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="728" height="90" src="./saved_resource(4).html"></iframe></body></html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://s0.2mdn.net/1906242/1552576679198/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>728x90</title><!-- SET BANNER SIZE -->
+  <meta content="width=728,height=90" name="ad.size">
+  
+  <style media="screen" type="text/css">
+		html,body,div,a,img {
+		  margin:0;
+		  padding:0;
+		  border:0;
+		  font-size:100%;
+		  font:inherit;
+		  vertical-align:baseline
+		}
+		#banner {
+		  position:static;
+		  width:728px;
+		  line-height:1;
+		  font-family:sans-serif;
+		  font-size:10px;
+		  overflow:hidden;
+		  background:#fff
+		}
+		#container {
+		  position:relative;
+		  width:728px;
+		  height:90px;
+		  outline: 1px solid #dbdbdb;
+		  outline-offset:-1px;
+		}
+		.img {
+		  display:block;
+		  line-height: 0;
+		  width:100%;
+		  height:100%;
+		  z-index:0
+		}
+		#legal-overlay,.legal-txt,.legal-close,.legal-btn {
+		  position:absolute
+		}
+		#legal-overlay {
+		  background:rgba(0,0,0,0.8);
+		  width:100%;
+		  height:100%;
+		  display:none;
+		  z-index:999
+		}
+		.legal-txt {
+		  color:#fff;
+		  text-align:left;
+		  left:0;
+		  right:0;
+		  margin-left:2%;
+		  height:100%;
+		  width:98%;
+		  overflow-y:auto;
+		  z-index:1000
+		}
+		.legal-txt p {
+		  margin:6px 3px
+		}
+		.legal-close {
+		  color:#fff;
+		  font-size:12px;
+		  font-weight:700;
+		  text-decoration:none;
+		  padding:5px;
+		  z-index:1000
+		}
+		.legal-btn {
+		  font-size:8px;
+		  text-transform: uppercase;
+		  text-decoration:none;
+		  color:#eee;
+		  padding:3px;
+		  left:0;
+		  top:0;
+		  z-index:2
+		}
+		.nobr {
+			white-space: nowrap;
+		}
+  </style>
+  <script type="text/javascript">
+  		  var clickTag = "http://www.ford.ca"; 
+          function toggle_hide(id) {
+                document.getElementById(id).style.display = 'none';
+            }
+            function toggle_show(id) {
+                document.getElementById(id).style.display = 'block';
+            }
+  </script>
+<script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script></head>
+
+<body id="banner">
+  <div id="container">
+    <div id="legal-overlay">
+      <a class="legal-close" href="https://s0.2mdn.net/1906242/1552576679198/index.html#" onclick="toggle_hide(&#39;legal-overlay&#39;);">x</a>
+
+      <div class="legal-txt">
+      <!-- START OF LEGAL COPY -->
+        <p>©2019 Ford Motor Company of Canada, Limited. All rights reserved.</p>
+      <!-- END OF LEGAL COPY -->
+      </div>
+    </div><a class="legal-btn" href="https://s0.2mdn.net/1906242/1552576679198/index.html#" onclick="toggle_show(&#39;legal-overlay&#39;);">Legal</a> <a href="javascript:window.open(window.clickTag)" class="img">
+    <!-- START OF IMAGE -->
+    <img alt="" border="0" src="./image.jpg">
+    <!-- END OF IMAGE -->
+    </a></div>
+
+</body></html>
