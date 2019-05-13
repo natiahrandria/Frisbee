@@ -41,4 +41,49 @@ public class Frisbee
 		Vx = V * Math.cos(theta);
 		Vy = V * Math.sin(theta)
 		
+		}
+		
+		public static double Vangle(double Vx, double Vy )
+		{
+			Vangle = Math.atan(Vy/Vx);
+			return Vangle;
+		}
+		
+		public static double accelerationx (double mass, double Fdragx, double Fliftx)
+		{
+			accelerationx = (Fdragx + Fliftx)/mass;
+			return accelerationx;
+		}
+
+		public static double accelerationy (double mass, double Fdragy, double Flifty, double Fgravity )	
+		{
+			accelerationy = (Fdragy + Flifty - Fgravity)/mass;
+			return accelerationy;
+		}
+		
+		public static double newvelx (double velx0, double accx, double dt)
+		{
+			newvelx = velx0 + accx * dt;
+			return newvelx;
+		}
+		
+		public static double newvely (double vely0, double accy, double dt)
+		{
+			newvely = vely0 + accy * dt;
+			return newvely;
+		}
+		
+		public static double deltax ( double vel0x, double accx, double dt)
+		{
+			deltax = vel0x * dt + ( accx * dt * dt)/2;
+			return deltax;
+		}
+		
+		public static double deltay ( double vel0y, double accy, double dt)
+		{
+			deltay = vel0y * dt + ( accy * dt * dt)/2;
+			return deltay;
+		}
+
+		
 		
