@@ -1,17 +1,66 @@
- import java.io.File;
-import java.io.FileWriter;
-import java.io.*;
+//minimization 
 
-
-
-public class Frisbee 
+public class GoldenRatioFrisbee
 {
-	public static void main (String [] args) throws IOException
+	public static void main (String[]args)
+	{
+		//variable declaration 
+		double a = 0.000;
+		double c = (Math.PI)/2;
+		double b = (0.38197*c);
+		double d;
+		while (Math.abs(a - c) > 0.0001)
+		{
+			
+			if ((c - b) > (b - a))
+			{
+				
+				d = b + 0.38197 * (c - b);
+				
+				if ( Frisbee(d) < Frisbee(b) )
+				{	
+					a = b; 
+					b = d;	
+				}
+				
+				else 
+				{	
+					c = d;
+					d = b + 0.38197 *(c-b);
+				}
+			}
+			
+			else 
+			{
+				d =	b - 0.38197 * (b - a);
+				
+				if ( Frisbee(d) < Frisbee(b) )
+				{	
+					c = b; 
+					b = d;
+					d =	b - 0.38197 * (b - a);				
+				}
+				
+				else 
+				{	
+					a = d;
+					
+				}
+			}
+		
+		}
+	
+		System.out.println(" best angle    " + (a+c)/2);
+		
+	} // end of main
+		
+	
+
+	public static double Frisbee ( double theta) 
 	{
 		// variables declaration
 		
-		double alpha; //angle of attack in rads
-		double theta = (10 * 2 * Math.PI)/360;  //launch angle in rads which is the same as the tilt 
+		double alpha; //angle of attack in rads 
 		double Vangle = theta;
 		double g = 9.81;   //gravity 
 		double Fd;	//Drag force
@@ -42,10 +91,7 @@ public class Frisbee
 		double dtin = dt;
 		double maxY = 0;
 		
-		File file = new File("H://Computer_Science//Frisbee//Frisbee//Code//FrisbeeTrajectory.data");
 		
-		
-		FileWriter writer = new FileWriter(file);
 		
 		
 		
@@ -103,18 +149,18 @@ public class Frisbee
 			
 				
 			System.out.println("position on x: " + posX + "  position on y: " + posY + "  time: " + dt);
-			String newLine = Double.toString(posX) + "," + Double.toString(posY) + "," + Double.toString(dt);
-			writer.write(newLine);
-			writer.write('\n');
+			
 			
 			
 			
 		}//while loop end
-			writer.close();
+			
 			
 			System.out.println();
 			System.out.println("max position on y axis: " + maxY);
 			System.out.println("Final position on x: " + posX + "  Final position on y: " + posY + "   Final time: " + dt);
+		
+		return posX;
 		}//end of main
 		
 		// Methods
@@ -125,7 +171,7 @@ public class Frisbee
 			return Velocity;
 		}
 		
-		
+				
 		public static double Vangle(double Vx, double Vy )
 		{
 			double Vangle;
@@ -228,20 +274,6 @@ public class Frisbee
 			Flifty = ( Cl * 1.23 * A * V * Vy )/2;
 			return Flifty;
 		}
+
 }//public class end 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
