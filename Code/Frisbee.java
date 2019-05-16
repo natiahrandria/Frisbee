@@ -11,7 +11,7 @@ public class Frisbee
 		// variables declaration
 		
 		double alpha; //angle of attack in rads
-		double theta = (10 * 2 * Math.PI)/360;  //launch angle in rads which is the same as the tilt 
+		double theta = 0.17963986739379245;  //launch angle in rads which is the same as the tilt 
 		double Vangle = theta;
 		double g = 9.81;   //gravity 
 		double Fd;	//Drag force
@@ -44,11 +44,9 @@ public class Frisbee
 		
 		File file = new File("H://Computer_Science//Frisbee//Frisbee//Code//FrisbeeTrajectory.data");
 		
-		
 		FileWriter writer = new FileWriter(file);
 		
-		
-		
+				
 		
 		
 		
@@ -59,11 +57,11 @@ public class Frisbee
 		alpha = theta - Vangle;
 		Cd = Cd(alpha);
 		Cl = Cl(alpha);
-		Fdragx = Fdragx(Cd, V, Vx);
-		Fliftx = Fliftx(Cl, V, Vx);	
+		Fdragx = Fdragx(Cd, V, Vx, Vangle);
+		Fliftx = Fliftx(Cl, V, Vx, Vangle);
 		accelx = accelerationx(Fdragx, Fliftx);
-		Fdragy = Fdragy(Cd, V, Vy);
-		Flifty = Flifty(Cl, V, Vy);
+		Fdragy = Fdragy(Cd, V, Vy, Vangle);
+		Flifty = Flifty(Cl, V, Vy, Vangle);
 		accely = accelerationy(Fdragy, Flifty); 
 		posX = deltax(Vx, accelx, dt);
 		posY = posY + deltay(Vy, accely, dt);
@@ -78,11 +76,11 @@ public class Frisbee
 			alpha = theta - Vangle;
 			Cd = Cd(alpha);
 			Cl = Cl(alpha);
-			Fdragx = Fdragx(Cd, V, Vx);
-			Fliftx = Fliftx(Cl, V, Vx);	
+			Fdragx = Fdragx(Cd, V, Vx, Vangle);
+			Fliftx = Fliftx(Cl, V, Vx, Vangle);	
 			accelx = accelerationx(Fdragx, Fliftx);
-			Fdragy = Fdragy(Cd, V, Vy);
-			Flifty = Flifty(Cl, V, Vy);
+			Fdragy = Fdragy(Cd, V, Vy, Vangle);
+			Flifty = Flifty(Cl, V, Vy, Vangle);
 			accely = accelerationy(Fdragy, Flifty); 
 			posX = posX + deltax(Vx, accelx, dt);
 			posY = posY + deltay(Vy, accely, dt);
@@ -90,11 +88,7 @@ public class Frisbee
 			Vy = newvely(Vy, accely, dt);
 			dt = dt + dtin;
 			
-			if(posY < 0)
-			{
-				break;
-			}
-			
+						
 			
 			if(maxY < posY)
 			{
@@ -193,39 +187,39 @@ public class Frisbee
 			return Cl;
 		}
 		
-		public static double Fdragx ( double Cd, double V, double Vx )
+		public static double Fdragx ( double Cd, double V, double Vx,  double Vangle )
 		{
 			double Fdragx;
 			double d = 0.26;
 			double A = Math.PI * Math.pow(d,2)/4;
-			Fdragx = ( Cd * 1.23 * A * V * Vx )/2;
+			Fdragx = (( Cd * 1.23 * A * V * V)/2) * Math.cos(Math.PI + Vangle);
 			return Fdragx;
 		}
 		
-		public static double Fdragy ( double Cd, double V, double Vy )
+		public static double Fdragy ( double Cd, double V, double Vy, double Vangle)
 		{
 			double Fdragy;
 			double d = 0.26;
 			double A = Math.PI * Math.pow(d,2)/4;
-			Fdragy = ( Cd * 1.23 * A * V * Vy )/2;
+			Fdragy = (( Cd * 1.23 * A * V * V )/2) * Math.sin(Math.PI + Vangle);
 			return Fdragy;
 		}
 		
-		public static double Fliftx ( double Cl, double V, double Vx )
+		public static double Fliftx ( double Cl, double V, double Vx, double Vangle )
 		{
 			double Fliftx;
 			double d = 0.26;
 			double A = Math.PI * Math.pow(d,2)/4;
-			Fliftx = ( Cl * 1.23 * A * V * Vx )/2;
+			Fliftx = (( Cl * 1.23 * A * V * V )/2) * Math.cos(Math.PI/2 + Vangle) ;
 			return Fliftx;
 		}
 		
-		public static double Flifty ( double Cl, double V, double Vy )
+		public static double Flifty ( double Cl, double V, double Vy, double Vangle )
 		{
 			double Flifty;
 			double d = 0.26;
 			double A = Math.PI * Math.pow(d,2)/4;
-			Flifty = ( Cl * 1.23 * A * V * Vy )/2;
+			Flifty = ((Cl * 1.23 * A * V * V)/2)*Math.sin(Math.PI/2 + Vangle);
 			return Flifty;
 		}
 }//public class end 
